@@ -228,3 +228,41 @@ var server = http.createServer(function(req, res) {
 server.listen(3000);
 console.log("Server listening on port 3000");
 
+// ######
+
+var express = require("express");
+var cors = require("cors");
+var bodyParser = require("body-parser");
+var app = express();
+var dataObject = [];
+
+
+app.use(bodyParser.json());
+app.use(podyParser.urlencoded({ extended: false}));
+app.use(function(req, res, next) {
+    console.log(`${req.method} request for ${req.url} - ${JSON.stringify(req.body)}`);
+    next();
+});
+app.use(express.static("./public"));
+app.use(cors());
+
+app.get("/dictionary-api", function(req, res) {
+    res.json(dataObject);
+});
+
+app.post("/dictionary-api", function(req, res){
+    dataObject.push(req.body);
+    res.json(dataObject);
+});
+
+app.delete("/dictionary-api/:term"), function(req, res) {
+    dataObject = dataObject.filter(function() {
+       return definition.term.toLowerCase() !== req.params.term.toLowerCase();
+    }); 
+    res.json(dataObject);
+}
+
+app.listen(3000);
+console.log("Express App running on port 3000");
+module.export = app;
+
