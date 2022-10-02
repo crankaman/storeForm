@@ -1,2 +1,7 @@
+[TOC]
+
 # storeForm
-Dynamic store forms generator
+
+_**Dynamic store forms generator**_
+
+:e-mail: 
