@@ -1,1 +1,0 @@
-In Node.js gibt es Template-Strings `${}`.
